@@ -1,0 +1,11 @@
+.env/*
+!.env/.env.dev
+!.env/.env.sample
+
+.DS_Store
+db_backups
+*.log
+
+*.yml
+!docker-compose.dev.yml
+template.md

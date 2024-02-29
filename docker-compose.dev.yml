@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  backend:
+    restart: unless-stopped
+    env_file:
+      - .env/.env.dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend/:/usr/src/backend/
+    ports:
+      - "80:8000"

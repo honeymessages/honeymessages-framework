@@ -1,0 +1,45 @@
+/*body {
+	background: url("../img/hex.png") repeat-x fixed;
+	background-size: 7em;
+}*/
+
+/*::-webkit-scrollbar {
+	height: 16px;
+	overflow: visible;
+	width: 16px;
+	display: none;
+}*/
+
+
+pre.inline {
+	padding: 0;
+	border: none;
+	word-break: break-all;
+	word-wrap: break-word;
+	display: contents;
+}
+
+table, th, td {
+	vertical-align: top;
+	padding: 2px;
+	text-align: left;
+}
+
+table {
+	width: 100% !important;
+	word-wrap: break-word;
+}
+
+th, td {
+	border-bottom: 1px solid #ddd;
+	overflow: auto;
+	width: 100%;
+}
+
+tr:hover {
+	background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+	background-color: #f5f5f5;
+}

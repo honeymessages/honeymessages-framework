@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+	<head>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		{% block head %}
+			<link rel="stylesheet" href="{% static 'css/core.css' %}">
+			<meta charset="utf-8">
+			<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+			<style>
+				body {
+					background: url({% static "img/bg.png" %}) repeat-x fixed;
+					background-size: 80px;
+				}
+			</style>
+			{% block head_js %}
+				<noscript>
+					<meta http-equiv="Set-Cookie" content="hasjs=False; url={{ request.build_absolute_uri }}">
+				</noscript>
+				<script>
+					document.cookie = "hasjs=True; url={{ request.build_absolute_uri }}";
+				</script>
+
+				{% block fingerprinting %}
+					<script src="{{ request.build_absolute_uri | strip_query | slash }}fingerprinting.js/"></script>
+				{% endblock %}
+			{% endblock %}
+		{% endblock %}
+	</head>
+
+	<body>
+		<header>
+			<p class="str">{% block header %}[Institution]{% endblock %}</p>
+		</header>
+
+		<main>
+			{% block body %}
+				{% block message %}
+					message
+				{% endblock %}
+			{% endblock %}
+		</main>
+
+		<footer>
+			<p class="str">{% block footer %}[Institution Footer]{% endblock %}</p>
+		</footer>
+	</body>
+</html>

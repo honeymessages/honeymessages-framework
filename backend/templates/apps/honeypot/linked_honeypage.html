@@ -1,0 +1,26 @@
+{% extends "apps/honeypot/honeypage.html" %}
+
+{% block content %}
+	{% if parent %}
+		<br/>
+		parent page: <a href="{{ parent.link }}">{{ parent.link }}</a>
+		<br/>
+	{%  else %}
+		<span>This is a root HoneyPage.</span>
+	{%  endif %}
+	<br/>
+	{% if children %}
+		<br/>
+		Child pages:
+		<ul>
+		{% for child in children %}
+			<li>
+				<a href="{{ child.link }}">{{ child.link }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	{%  else %}
+		<span>This is a leaf HoneyPage.</span>
+	{% endif %}
+	<br/>
+{% endblock content %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+	<head>
+		<title>
+			{% block title %}-title-{% endblock %}
+		</title>
+		{% block head %}
+			<!--link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"-->
+			<link rel="stylesheet" href="{% static 'css/core.css' %}">
+			<meta charset="utf-8">
+			<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+			<style>
+				body {
+					/*background: url({% static "img/bg.png" %}) repeat-x fixed;
+					background-size: 80px;*/
+				}
+			</style>
+		{% endblock %}
+	</head>
+
+	<body>
+		<header>
+			<p class="str">{% block header %}[Institution]{% endblock %}</p>
+		</header>
+
+		<main>
+			{% block body %}
+				{% block content %}-content-{% endblock %}
+			{% endblock %}
+		</main>
+
+		<footer>
+			<p class="str">{% block footer %}[Institution Footer]{% endblock %}</p>
+		</footer>
+
+		{% block body_js %}{% endblock body_js %}
+	</body>
+</html>

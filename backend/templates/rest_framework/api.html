@@ -1,0 +1,67 @@
+{% extends "rest_framework/base.html" %}
+{% load honeypot_extra_tags %}
+{% load static %}
+
+{% block title %}
+	{% if name %}{{ name }} – {% endif %}HoneyMessages Framework
+{% endblock %}
+
+{% block branding %}
+	<a class='navbar-brand' rel="nofollow" href='/api/'>HoneyMessages Framework</a>
+{% endblock %}
+
+{% block content %}
+	{{ block.super }}
+	<footer>
+		<ul class="breadcrumb">
+			<li class="active">{{ SETTINGS_MODULE | title }}</li>
+			<li class="active">{{ DATABASE_ENGINE }}</li>
+			<li class="active">{{ USER_COUNT }}</li>
+			<li class="active">
+				<a href="/api/experiments/get_running_experiments/">
+					{% if RUNNING_EXPERIMENT_COUNT > 0 %}
+						{{ RUNNING_EXPERIMENT_COUNT }}
+					{% else %}
+						No
+					{% endif %}
+					Experiments running
+				</a>
+			</li>
+			<li class="active">
+				<a href="/api/experiments/get_finished_experiments/">
+					{{ FINISHED_EXPERIMENT_COUNT }} Experiments finished
+				</a>
+			</li>
+			<!--li class="active">
+				<a href="{{ FRONTEND_URL }}">
+					Visit Frontend (Honeyboard)
+				</a>
+			</li-->
+		</ul>
+	</footer>
+{% endblock %}
+
+{% block head %}
+	{{ block.super }}
+	<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
+	{% block head_js %}
+		{% block fingerprinting %}
+			<script src="{{ request.build_absolute_uri | strip_query | slash }}fingerprinting.js/"></script>
+		{% endblock %}
+
+		{% if not user.is_authenticated or not request.user.is_authenticated %}
+			<noscript>
+				<meta http-equiv="Set-Cookie" content="hasjs=False; url={{ request.build_absolute_uri }}">
+			</noscript>
+			<script>
+				document.cookie = "hasjs=True; url={{ request.build_absolute_uri }}";
+			</script>
+		{% endif %}
+	{% endblock %}
+{% endblock %}
+
+{% block style %}
+	{{ block.super }}
+	 <link rel="stylesheet" type="text/css" href="{% static "css/api.css" %}"/>
+{% endblock %}

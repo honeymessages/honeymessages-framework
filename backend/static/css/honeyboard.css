@@ -1,0 +1,189 @@
+ul.experiments {
+
+}
+
+h4 {
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+
+ul.experiments:before {
+	content: "Experiments: ";
+	padding-left: 0;
+}
+
+ul.csv {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.csv li {
+	display: inline;
+}
+
+ul.csv li:after {
+	content: ", ";
+}
+
+ul.csv li:last-child:after {
+	content: "";
+}
+
+/* Email containers */
+ul.email {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.email {
+	border: 2px solid #dedede;
+	background-color: #f1f1f1;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+span.sender {
+	color: #545454;
+}
+
+span.sender::before {
+	content: "From: ";
+	font-weight: bold;
+}
+
+span.subject {
+	color: #545454;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+}
+
+span.receiver {
+	color: #545454;
+}
+
+span.receiver::before {
+	content: "To: ";
+	font-weight: bold;
+}
+
+span.delivered_to {
+	color: #545454;
+}
+
+span.delivered_to::before {
+	content: "Delivered to: ";
+	font-weight: bold;
+}
+
+/* Clear floats */
+div.email::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Style images */
+div.email img {
+	float: left;
+	max-width: 60px;
+	width: 100%;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+/* Style the right image */
+div.email img.right {
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+	float: right;
+	color: #aaaaaa;
+}
+
+/* Style time text */
+.time-left {
+	float: left;
+	color: #999999;
+}
+
+pre.message {
+	margin-top: 1em;
+	overflow: overlay;
+	max-height: 11em;
+}
+
+/* Checkboxes */
+/* Customize the label (the container) */
+.checkbox-container {
+	display: block;
+	position: relative;
+	padding-left: 25px;
+	margin-bottom: 12px;
+	font-weight: normal;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+	position: absolute;
+	opacity: 0;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 3px;
+	left: 0;
+	height: 15px;
+	width: 15px;
+	background-color: #ccc;  /* #eee */
+}
+
+/* On mouse-over, add a grey background color */
+/*
+.checkbox-container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+*/
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+	background-color: #DC143C;  /* #2196F3;*/
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+	left: 5px;
+	top: 1.5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}

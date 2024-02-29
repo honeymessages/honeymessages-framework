@@ -1,0 +1,41 @@
+# This file contains formatting directives for editors.
+#
+# This is supported by many of the respectable IDEs, see
+# http://editorconfig.org for more details.
+#
+# This file contains the settings from the Django project.
+
+# ##### .editorconfig
+root = true
+
+[*]
+indent_style = tab
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+charset = utf-8
+
+[{*.js, *.css, *.html}]
+indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.py]
+max_line_length = 119
+
+[{*.json, *.yaml, *.yml}]
+insert_final_newline = false
+
+[**/admin/js/vendor/**]
+indent_style = tab
+indent_size = tab
+
+# Makefiles always use tabs for indentation
+[Makefile]
+indent_style = tab
+
+# Batch files use tabs for indentation
+[*.bat]
+indent_style = tab

@@ -1,0 +1,27 @@
+{
+    "chrome": {
+        "min": 4,
+        "max": 115
+    },
+    "edge": {
+        "min": 12,
+        "max": 18,
+        "note": "equivalent to Chrome after Version 18"
+    },
+    "firefox": {
+        "min": 4,
+        "max": 114
+    },
+    "ie": {
+        "min": 9,
+        "max": 11
+    },
+    "opera": {
+        "min": 11,
+        "max": 95
+    },
+    "safari": {
+        "min": 5,
+        "max": 16
+    }
+}

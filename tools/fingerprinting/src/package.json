@@ -1,0 +1,7 @@
+{
+    "name": "fingerprinting",
+    "version": "1.0.0",
+    "dependencies": {
+        "@mdn/browser-compat-data": "4.0.9"
+    }
+}

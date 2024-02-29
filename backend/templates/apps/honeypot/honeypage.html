@@ -1,0 +1,256 @@
+{% load honeypot_extra_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}{{ title }}{% endblock %}</title>
+	{% block head %}
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{{ request.build_absolute_uri | strip_query | slash }}style.css/">
+
+        {% if meta_tags %}
+            <link rel="shortcut icon" href="{{ request.build_absolute_uri | strip_query | slash }}meta_tags.png/">
+        {% else %}
+		    <link rel="shortcut icon" href="{{ request.build_absolute_uri | strip_query | slash }}favicon.png/">
+        {% endif %}
+
+	{% endblock head %}
+    {% block meta %}
+        {% if meta_tags %}
+            <!-- Primary Meta Tags -->
+            <meta name="title" content="MT {{ title }}">
+            <meta name="description" content="(Meta Tag) Research website by [Institution].">
+
+            <!-- Open Graph / Facebook -->
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="{{ request.build_absolute_uri }}">
+            <meta property="og:title" content="OG {{ title }}">
+            <meta property="og:description" content="(opengraph) Research website by [Institution].">
+            <meta property="og:image" content="{{ request.build_absolute_uri | strip_query | slash }}opengraph.png/">
+            <meta property="og:image:width" content="300" />
+            <meta property="og:image:height" content="300" />
+
+            <!-- Twitter -->
+            <meta property="twitter:card" content="summary_large_image">
+            <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+            <meta property="twitter:title" content="TW {{ title }}">
+            <meta property="twitter:description" content="(Meta Tag Twitter) Research website by [Institution].">
+            <meta property="twitter:image" content="{{ request.build_absolute_uri | strip_query | slash }}twitter.png/">
+        {% endif %}
+    {% endblock meta %}
+	{% block head_js %}
+		<script>
+			document.cookie = "hasjs=True; path={{ request.path }}; url={{ request.build_absolute_uri | strip_query | slash }}";
+		</script>
+		<script src="{{ request.build_absolute_uri | strip_query | slash }}embed.js/"></script>
+	{% endblock %}
+</head>
+
+<body>
+{% if user.is_authenticated or request.user.is_authenticated %}
+	<span style="color: darkgreen">
+	##########################################################################################################<br/>
+		<strong>You are authenticated.</strong><br/>
+		You are visiting this Honeypage as an authenticated user ({{ user }}).<br/>
+		Your visit will not be logged.<br/>
+	##########################################################################################################
+	</span>
+	<br/>
+{% endif %}
+
+<header>
+	<p class="str">{% block header %}[Institution]{% endblock %}</p>
+</header>
+
+<main>
+	{% block body %}
+		<h1>
+			Welcome to <a id="a_current_page" href="{{ request.build_absolute_uri }}">
+			{{ request.build_absolute_uri }}</a>
+		</h1>
+        <br/>
+        {% block description %}
+            This page is part of a research project from [Institution].<br/>
+            <strong>If you are a human reading this, you may leave the page.</strong><br/>
+            If you would like to learn more about this project or opt out, please contact [contact].
+        {% endblock description %}
+        <br/>
+		<img
+            src="{{ request.build_absolute_uri | strip_query | slash }}logo.png/"
+            alt="Logo"
+            height="60px"
+            style="margin: 2em 0 2em 0"
+        >
+        <br>
+
+		{% if suspicious %}
+			#####################################################<br/>
+			<strong>This is a suspicious honeypage.</strong><br/>
+			#####################################################
+			<ul>
+				<!-- Eicar File -->
+				<li>Eicar Antivirus Testfile from <a href="https://www.eicar.org/download-anti-malware-testfile/">https://www.eicar.org</a>
+					<ul>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}eicar.com">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}eicar.com">
+										eicar.com
+									</a>
+								</object>
+							</div>
+						</li>
+						<li>
+							<a href="{{ request.build_absolute_uri | strip_query | slash }}eicar.com" download="eicar.com">
+								eicar.com
+							</a>
+						</li>
+						<li>
+							<a href="data:application/x-msdos-program,X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*" download="eicar.com">
+								eicar data
+							</a>
+						</li>
+						<li>
+							<a href="data:application/x-msdos-program;base64,WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElWSVJVUy1URVNULUZJTEUhJEgrSCo=" download="eicar.com">
+								eicar data base64
+							</a>
+						</li>
+					</ul>
+				</li>
+
+				<!-- empty -->
+				<li>C++ program with empty body
+					<ul>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}empty_vs2019.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}empty_vs2019.exe">empty_vs2019.exe</a>
+									(Windows with VS Code 2019)
+								</object>
+							</div>
+						</li>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}empty_vs2022.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}empty_vs2022.exe">empty_vs2022.exe</a>
+									(Windows with VS Code 2022)
+								</object>
+							</div>
+						</li>
+					</ul>
+				</li>
+
+				<!-- printf -->
+				<li>C++ program with printf
+					<ul>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}printf_vs2019.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}printf_vs2019.exe">printf_vs2019.exe</a>
+									(Windows with VS Code 2019)
+								</object>
+							</div>
+						</li>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}printf_vs2022.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}printf_vs2022.exe">printf_vs2022.exe</a>
+									(Windows with VS Code 2022)
+								</object>
+							</div>
+						</li>
+					</ul>
+				</li>
+
+				<!-- cout -->
+				<li>C++ program with cout
+					<ul>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2019.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2019.exe">cout_vs2019.exe</a>
+									(Windows with VS Code 2019)
+								</object>
+							</div>
+						</li>
+						<li>
+							<div>
+								<object
+									data="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2019_EHsc.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2019_EHsc.exe">cout_vs2019_EHsc.exe</a>
+									(Windows with VS Code 2019)
+								</object>
+							</div>
+						</li>
+						<li>
+							<div>
+								<object data="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2022.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2022.exe">cout_vs2022.exe</a>
+									(Windows with VS Code 2022)
+								</object>
+							</div>
+						</li>
+						<li>
+							<div>
+								<object
+									data="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2022_EHsc.exe">
+									<a href="{{ request.build_absolute_uri | strip_query | slash }}cout_vs2022_EHsc.exe">cout_vs2022_EHsc.exe</a>
+									(Windows with VS Code 2022)
+								</object>
+							</div>
+						</li>
+					</ul>
+				</li>
+
+			</ul>
+		{% endif %}
+
+		{% if registered %}
+			<br/>
+			#####################################################<br/>
+			<strong>This is a registered honeypage.</strong><br/>
+			#####################################################
+			<br/><br/>
+		{% endif %}
+
+		{% block content %}
+			-content-
+		{% endblock content %}
+
+		{% block pdf %}
+			<p class="str">
+				There is a generated <a
+				href="{{ request.build_absolute_uri | strip_query | slash }}generate.pdf">PDF</a>
+				embedded below.
+			</p>
+			<div id="pdf_placeholder" style="width: fit-content; height: fit-content;">
+				<!-- embedded PDF -->
+				<object data="{{ request.build_absolute_uri | strip_query | slash }}generate.pdf/"
+						type="application/pdf" width="350px" height="500px">
+					<embed src="{{ request.build_absolute_uri | strip_query | slash }}generate.pdf/"
+						   type="application/pdf" width="350px" height="500px">
+				</object>
+			</div>
+		{% endblock pdf %}
+		<p id="img_text_placeholder" class="str"></p>
+		<div id="img_placeholder" style="height:0; width:0;">
+			<!-- image inserted by JavaScript -->
+		</div>
+	{% endblock %}
+</main>
+
+<footer>
+	<p class="str">{% block footer %}[Institution]{% endblock %}</p>
+</footer>
+</body>
+
+{% block fingerprinting %}
+	<script src="{{ request.build_absolute_uri | strip_query | slash }}fingerprinting.js/"></script>
+{% endblock %}
+</html>
+
+
+
+
+
+
