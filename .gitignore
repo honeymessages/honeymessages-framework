@@ -9,3 +9,4 @@ db_backups
 *.yml
 !docker-compose.dev.yml
 template.md
+honeymessages.bib
