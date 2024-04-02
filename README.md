@@ -287,7 +287,7 @@ CSRF_COOKIE_DOMAIN=.<DOMAIN>-docker.artifacts.measurement.network
 
 5. Run the startup script `./scripts/full-restart.sh`. 
 
-Please note that step 2 includes a 58 MB download, which may take a few minutes on the VM. Afterwards, the containers should appear in `docker ps`. 
+Please note that the download step includes a 58 MB download, which may take a few minutes on the VM. Afterwards, the containers should appear in `docker ps`. 
 
 The running framework should now be reachable via browser by using the PETS VM’s hostname.
 Visit `http://<DOMAIN>-docker.artifacts.measurement.network/` like this or with arbitrary path to reach a honey page. Visit `http://<DOMAIN>-docker.artifacts.measurement.network/api/` to see the API starting page. Remember that default login is set to username “honey” and password “messages” and that you can find the login button on the top right.
