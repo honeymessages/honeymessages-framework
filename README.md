@@ -7,7 +7,12 @@
 If you use our code, please cite our paper (to appear at PETS 2024):
 
 ```bibtex
-...
+@inproceedings{kirchner2024:honeymessages,
+  title={A {B}lack-{B}ox {P}rivacy {A}nalysis of {M}essaging {S}ervice {P}roviders' {C}hat {M}essage {P}rocessing},
+  author={Kirchner, Robin and Koch, Simon and Kamangar, Noah and Klein, David and Johns, Martin},
+  booktitle={Proceedings on {P}rivacy {E}nhancing {T}echnologies ({PoPETs})},
+  year={2024}
+}
 ```
 
 ## Description
@@ -46,7 +51,14 @@ Use the provided [initial database](backend/run/dev.sqlite3) and plot an [evalua
 
 _This guide was tested on a MacBook Pro 2019 running macOS Sonoma 14.3.1._
 
-You will need [Docker](https://docs.docker.com/engine/install) and [docker-compose](https://docs.docker.com/compose/install/).
+- You will need [Docker](https://docs.docker.com/engine/install) and [docker compose](https://docs.docker.com/compose/install/).
+- We require GeoIP2's city database. Please download [GeoLite2-City.mmdb](https://git.io/GeoLite2-City.mmdb) from [P3TERX/GeoLite.mmdb](https://github.com/P3TERX/GeoLite.mmdb) and place it in `run/geoip/GeoLite2-City.mmdb` (~50MB) and `GeoLite2-ASN` (~8MB). You can use the script below to fulfill this task.
+
+```bash
+# assuming you are in the honeymessages-framework directory
+./scripts/download-files.sh
+```
+
 The framework can easily be managed using the corresponding browsable API.
 For this local setup you will need to update the `/etc/hosts` file on your host machine, since the framework requires a domain with TLD and arbitrary subdomains.
 
@@ -188,7 +200,7 @@ Simply stop the docker containers using the stop script.
 ##### Conclusion
 
 This concludes the tutorial on how to setup the honey messages framework. For real-world tests, you will need a public
-domain with wildcard subdomains to run tests on messengers. Django and docker-compose make it really easy to add a
+domain with wildcard subdomains to run tests on messengers. Django and docker compose make it really easy to add a
 web server into the setup that serves the static files. Also, you may want to use a faster database in production, e.g.,
 [PostgreSQL with Django](https://docs.djangoproject.com/en/5.0/ref/databases/).
 

@@ -2,7 +2,7 @@
 
 ## Reference
 
-If you use this fingerprinting approach, please cite the work "Server-Side Browsers: Exploring the Web's Hidden Attack Surface" (Marius Musch, Robin Kirchner, Max Boll, Martin Johns) (AsiaCCS 2022) using the [SSB.bib](./ssb.bib) and this work [honeymessages.bib](../../honeymessages.bib).
+If you use this fingerprinting approach, please cite the work "[Server-Side Browsers: Exploring the Web's Hidden Attack Surface](https://www.tu-braunschweig.de/index.php?eID=dumpFile&t=f&f=141298&token=17234fac9e20e4c5c05bba1a3e73672c9e48c459)" (Marius Musch, Robin Kirchner, Max Boll, Martin Johns) (AsiaCCS 2022) using the [SSB.bib](https://www.tu-braunschweig.de/index.php?eID=dumpFile&t=f&f=137701&token=9350eed071ef926f83a85d32f9e888b4b0bedc6b) and this work [honeymessages.bib](../../honeymessages.bib).
 
 ## Introduction
 
