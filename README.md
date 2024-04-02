@@ -51,6 +51,8 @@ Use the provided [initial database](backend/run/dev.sqlite3) and plot an [evalua
 
 _This guide was tested on a MacBook Pro 2019 running macOS Sonoma 14.3.1._
 
+See the [PETS Instructions](#pets-instructions) when using a preinstalled VM with Docker installed that is already reachable via Internet.
+
 - You will need [Docker](https://docs.docker.com/engine/install) and [docker compose](https://docs.docker.com/compose/install/).
 - We require GeoIP2's city database. Please download [GeoLite2-City.mmdb](https://git.io/GeoLite2-City.mmdb) from [P3TERX/GeoLite.mmdb](https://github.com/P3TERX/GeoLite.mmdb) and place it in `run/geoip/GeoLite2-City.mmdb` (~50MB) and `GeoLite2-ASN` (~8MB). You can use the script below to fulfill this task.
 
@@ -265,3 +267,29 @@ This repository also includes a simple API connector written in Node.Js to demon
 different programming languages.
 
 See [api-sample/README.md](api-sample/README.md) for further information.
+
+---
+
+## PETS Instructions
+
+These are instructions, specifically for the Ubuntu Server VMs offered by the PETS conference.
+
+1. clone the repository: `git clone https://github.com/honeymessages/honeymessages-framework`
+2. move into the directory: `cd honeymessages-framework`
+3. run `./scripts/download-files.sh`
+4. Configure your PETS VM hostname in `.env/.env.dev`. Enter the PETS VM hostname without protocol into `DOMAIN_NAME`. Enter the same domain but with a dot before it into SESSION_COOKIE_DOMAIN and CSRF_COOKIE_DOMAIN. See this example for reference.
+
+```
+DOMAIN_NAME=<DOMAIN>-docker.artifacts.measurement.network
+SESSION_COOKIE_DOMAIN=.<DOMAIN>-docker.artifacts.measurement.network
+CSRF_COOKIE_DOMAIN=.<DOMAIN>-docker.artifacts.measurement.network
+```
+
+5. Run the startup script `./scripts/full-restart.sh`. 
+
+Please note that step 2 includes a 58 MB download, which may take a few minutes on the VM. Afterwards, the containers should appear in `docker ps`. 
+
+The running framework should now be reachable via browser by using the PETS VM’s hostname.
+Visit `http://<DOMAIN>-docker.artifacts.measurement.network/` like this or with arbitrary path to reach a honey page. Visit `http://<DOMAIN>-docker.artifacts.measurement.network/api/` to see the API starting page. Remember that default login is set to username “honey” and password “messages” and that you can find the login button on the top right.
+
+It is important to note that the framework requires arbitrary subdomains to function completely. This is not available by the PETS network. However, running the framework like this and visiting the API page shows that the setup functions.
