@@ -277,10 +277,13 @@ These are instructions, specifically for the Ubuntu Server VMs offered by the PE
 1. clone the repository: `git clone https://github.com/honeymessages/honeymessages-framework`
 2. move into the directory: `cd honeymessages-framework`
 3. run `./scripts/download-files.sh`
-4. Configure your PETS VM hostname in `.env/.env.dev`. Enter the PETS VM hostname without protocol into `DOMAIN_NAME`. Enter the same domain but with a dot before it into SESSION_COOKIE_DOMAIN and CSRF_COOKIE_DOMAIN. See this example for reference.
+4. Configure your PETS VM hostname in `.env/.env.dev`. Enter the PETS VM hostname without protocol into `DOMAIN_NAME` and `CSRF_TRUSTED_ORIGINS`. Enter the same domain but with a dot before it into SESSION_COOKIE_DOMAIN and CSRF_COOKIE_DOMAIN. See this example for reference.
 
 ```
 DOMAIN_NAME=<DOMAIN>-docker.artifacts.measurement.network
+CSRF_TRUSTED_ORIGINS=<DOMAIN>-docker.artifacts.measurement.network
+
+# with . before the domain
 SESSION_COOKIE_DOMAIN=.<DOMAIN>-docker.artifacts.measurement.network
 CSRF_COOKIE_DOMAIN=.<DOMAIN>-docker.artifacts.measurement.network
 ```
