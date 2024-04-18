@@ -289,7 +289,8 @@ CSRF_COOKIE_DOMAIN=.<DOMAIN>-docker.artifacts.measurement.network
 
 Please note that the download step includes a 58 MB download, which may take a few minutes on the VM. Afterwards, the containers should appear in `docker ps`. 
 
-The running framework should now be reachable via browser by using the PETS VM’s hostname.
+The next steps are tested with Chrome and Firefox:
+The running framework should now be reachable via Chrome or Firefox by using the PETS VM’s hostname.
 Visit `http://<DOMAIN>-docker.artifacts.measurement.network/` like this or with arbitrary path to reach a honey page. Visit `http://<DOMAIN>-docker.artifacts.measurement.network/api/` to see the API starting page. Remember that default login is set to username “honey” and password “messages” and that you can find the login button on the top right.
 
 It is important to note that the framework requires arbitrary subdomains to function completely. This is not available by the PETS network. However, running the framework like this and visiting the API page shows that the setup functions.
