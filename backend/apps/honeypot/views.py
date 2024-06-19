@@ -27,7 +27,7 @@ from rest_framework.response import Response
 from ua_parser import user_agent_parser
 
 import honeypot.pdf.make_pdf_phone_home as make_pdf_phone_home
-from control_server.core import SERVER_ADDRESS, extract_ip_address
+from control_server.core import SERVER_ADDRESS_REGEX, extract_ip_address
 from .models import (
     Honeypage,
     Honeymail,
@@ -122,7 +122,7 @@ def default_view(request, args=None):
 def extract_subdomain_and_path_from_request(url):
     pattern = re.compile(
         r"^https?://(?P<subdomain>[\w-]+).{server_address}/(?P<path>[\w/-]+)?/?$".format(
-            server_address=SERVER_ADDRESS
+            server_address=SERVER_ADDRESS_REGEX
         ),
         re.IGNORECASE
     )
